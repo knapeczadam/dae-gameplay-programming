@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="SurvivalAgentPlugin.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="project\Movement\SteeringBehaviors\Steering\SteeringBehaviors.cpp" />
+    <ClCompile Include="project\Shared\BaseAgent.cpp" />
+    <ClCompile Include="project\Movement\SteeringBehaviors\SteeringAgent.cpp" />
+    <ClCompile Include="project\Movement\SteeringBehaviors\PathFollow\PathFollowSteeringBehavior.cpp" />
+    <ClCompile Include="project\Movement\SteeringBehaviors\CombinedSteering\CombinedSteeringBehaviors.cpp" />
+    <ClCompile Include="project\DecisionMaking\SmartAgent.cpp" />
+    <ClCompile Include="project\DecisionMaking\FiniteStateMachines\StatesAndTransitions.cpp" />
+    <ClCompile Include="framework\EliteAI\EliteDecisionMaking\EliteFiniteStateMachine\EFiniteStateMachine.cpp" />
+    <ClCompile Include="framework\EliteAI\EliteDecisionMaking\EliteBehaviorTree\EBehaviorTree.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SurvivalAgentPlugin.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="project\Movement\SteeringBehaviors\Steering\SteeringBehaviors.h" />
+    <ClInclude Include="project\Movement\SteeringBehaviors\SteeringHelpers.h" />
+    <ClInclude Include="project\Shared\BaseAgent.h" />
+    <ClInclude Include="project\Movement\SteeringBehaviors\SteeringAgent.h" />
+    <ClInclude Include="project\Movement\SteeringBehaviors\PathFollow\PathFollowSteeringBehavior.h" />
+    <ClInclude Include="project\Movement\SteeringBehaviors\CombinedSteering\CombinedSteeringBehaviors.h" />
+    <ClInclude Include="project\DecisionMaking\SmartAgent.h" />
+    <ClInclude Include="project\DecisionMaking\FiniteStateMachines\StatesAndTransitions.h" />
+    <ClInclude Include="project\DecisionMaking\BehaviorTrees\Behaviors.h" />
+  </ItemGroup>
+</Project>

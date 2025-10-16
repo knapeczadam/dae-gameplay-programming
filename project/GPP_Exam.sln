@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GPP_Exam", "GPP_Exam.vcxproj", "{E1DB7373-9BCD-4D5E-A8B2-3F2DD82E3D53}"
+EndProject
+Project("{911E67C6-3D85-4FCE-B560-20A9C3E3FF48}") = "GPP_EXAM_DEBUG", "..\_DEMO_DEBUG\GPP_EXAM_DEBUG.exe", "{37E85561-6C04-453A-8DC5-65DF8EFB372A}"
+	ProjectSection(DebuggerProjectSystem) = preProject
+		PortSupplier = 00000000-0000-0000-0000-000000000000
+		Executable = ..\_DEMO_DEBUG\GPP_EXAM_DEBUG.exe
+		RemoteMachine = LAPTOP_FRIES
+		StartingDirectory = ..\_DEMO_DEBUG
+		Environment = Default
+		LaunchingEngine = 00000000-0000-0000-0000-000000000000
+		UseLegacyDebugEngines = No
+		LaunchSQLEngine = No
+		AttachLaunchAction = No
+		IORedirection = Auto
+	EndProjectSection
+EndProject
+Project("{911E67C6-3D85-4FCE-B560-20A9C3E3FF48}") = "GPP_EXAM_RELEASE", "..\_DEMO_RELEASE\GPP_EXAM_RELEASE.exe", "{0DE5575C-3F4C-4E01-ABCB-489B3922078F}"
+	ProjectSection(DebuggerProjectSystem) = preProject
+		PortSupplier = 00000000-0000-0000-0000-000000000000
+		Executable = ..\_DEMO_RELEASE\GPP_EXAM_RELEASE.exe
+		RemoteMachine = LAPTOP_FRIES
+		StartingDirectory = ..\_DEMO_RELEASE
+		Environment = Default
+		LaunchingEngine = 00000000-0000-0000-0000-000000000000
+		UseLegacyDebugEngines = No
+		LaunchSQLEngine = No
+		AttachLaunchAction = No
+		IORedirection = Auto
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E1DB7373-9BCD-4D5E-A8B2-3F2DD82E3D53}.Debug|x86.ActiveCfg = Debug|Win32
+		{E1DB7373-9BCD-4D5E-A8B2-3F2DD82E3D53}.Debug|x86.Build.0 = Debug|Win32
+		{E1DB7373-9BCD-4D5E-A8B2-3F2DD82E3D53}.Release|x86.ActiveCfg = Release|Win32
+		{E1DB7373-9BCD-4D5E-A8B2-3F2DD82E3D53}.Release|x86.Build.0 = Release|Win32
+		{37E85561-6C04-453A-8DC5-65DF8EFB372A}.Debug|x86.ActiveCfg = Release|x86
+		{37E85561-6C04-453A-8DC5-65DF8EFB372A}.Release|x86.ActiveCfg = Release|x86
+		{0DE5575C-3F4C-4E01-ABCB-489B3922078F}.Debug|x86.ActiveCfg = Release|x86
+		{0DE5575C-3F4C-4E01-ABCB-489B3922078F}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {388F01AE-5E24-4FEE-B71A-0F80FAF4BE4B}
+	EndGlobalSection
+EndGlobal

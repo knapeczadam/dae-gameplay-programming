@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root BTCPP_format="4">
+  <BehaviorTree ID="behavior_tree">
+    <Fallback>
+      <Sequence>
+        <ScriptCondition code="Player_IsWounded"/>
+        <Script code="Inventory_UseMedkit"/>
+      </Sequence>
+      <Sequence>
+        <ScriptCondition code="Player_IsHungry"/>
+        <Script code="Inventory_UseFood"/>
+      </Sequence>
+      <Sequence>
+        <Inverter>
+          <ScriptCondition code="Player_HasStamina"/>
+        </Inverter>
+        <Script code="Player_Walk"/>
+      </Sequence>
+      <Sequence>
+        <ScriptCondition code="Inventory_ContainsEmptyItem"/>
+        <Script code="Inventory_RemoveEmptyItem"/>
+      </Sequence>
+      <Sequence>
+        <ScriptCondition code="FOV_ContainsEnemy"/>
+        <Fallback>
+          <Sequence>
+            <Script code="Target_SetNearestEnemy"/>
+            <Fallback>
+              <Sequence>
+                <ScriptCondition code="Inventory_ContainsWeapon"/>
+                <Fallback>
+                  <ReactiveSequence>
+                    <ScriptCondition code="Inventory_ContainsPistol"/>
+                    <Script code="Steering_Face"/>
+                    <ScriptCondition code="Target_IsInShootingRange"/>
+                    <Script code="Inventory_UsePistol"/>
+                  </ReactiveSequence>
+                  <ReactiveSequence>
+                    <ScriptCondition code="Inventory_ContainsShotgun"/>
+                    <Script code="Steering_Face"/>
+                    <ScriptCondition code="Target_IsInShootingRange"/>
+                    <Script code="Inventory_UseShotgun"/>
+                  </ReactiveSequence>
+                </Fallback>
+              </Sequence>
+              <ReactiveSequence>
+                <ScriptCondition code="Steering_Evade"/>
+              </ReactiveSequence>
+            </Fallback>
+          </Sequence>
+        </Fallback>
+      </Sequence>
+      <Sequence>
+        <ScriptCondition code="Player_WasBitten"/>
+        <Fallback>
+          <ReactiveSequence>
+            <ScriptCondition code="Inventory_ContainsWeapon"/>
+            <Script code="Target_Turn"/>
+            <Script code="Steering_Face"/>
+            <Script code="Target_Turn"/>
+            <Script code="Steering_Face"/>
+            <Script code="Target_Turn"/>
+            <Script code="Steering_Face"/>
+            <Script code="Target_Turn"/>
+            <Script code="Steering_Face"/>
+          </ReactiveSequence>
+          <Sequence>
+            <Script code="Player_Run"/>
+          </Sequence>
+        </Fallback>
+      </Sequence>
+      <ReactiveSequence>
+        <ScriptCondition code="Player_IsInPurgeZone"/>
+        <Script code="Target_SetClosestSafePoint"/>
+        <Script code="Steering_Seek"/>
+      </ReactiveSequence>
+      <Sequence>
+        <ScriptCondition code="FOV_ContainsItem"/>
+        <Fallback>
+          <Sequence>
+            <ScriptCondition code="FOV_ContainsOnlyGarbage"/>
+            <Script code="FOV_DestroyItems"/>
+          </Sequence>
+          <Sequence>
+            <ScriptCondition code="FOV_ContainsOneItem"/>
+            <Fallback>
+              <Sequence>
+                <Script code="Target_SetNearestItem"/>
+                <Fallback>
+                  <ReactiveSequence>
+                    <Inverter>
+                      <ScriptCondition code="Inventory_IsFull"/>
+                    </Inverter>
+                    <Script code="Steering_Seek"/>
+                    <Script code="Inventory_AddNearestItem"/>
+                  </ReactiveSequence>
+                  <Sequence>
+                    <ScriptCondition code="FOV_ContainsPistol"/>
+                    <Fallback>
+                      <Sequence>
+                        <ScriptCondition code="Inventory_ContainsPistol"/>
+                        <Fallback>
+                          <ReactiveSequence>
+                            <ScriptCondition code="FOV_ContainsValuablePistol"/>
+                            <Script code="Inventory_RemoveLowestValuePistol"/>
+                            <Script code="Steering_Seek"/>
+                            <Script code="Inventory_AddNearestItem"/>
+                          </ReactiveSequence>
+                          <Sequence>
+                            <Script code="FOV_DestroyItems"/>
+                          </Sequence>
+                        </Fallback>
+                      </Sequence>
+                      <ReactiveSequence>
+                        <Script code="Inventory_PriorityRemoveLowestValueItem"/>
+                        <Script code="Steering_Seek"/>
+                        <Script code="Inventory_AddNearestItem"/>
+                      </ReactiveSequence>
+                    </Fallback>
+                  </Sequence>
+                  <Sequence>
+                    <ScriptCondition code="FOV_ContainsShotgun"/>
+                    <Fallback>
+                      <Sequence>
+                        <ScriptCondition code="Inventory_ContainsShotgun"/>
+                        <Fallback>
+                          <ReactiveSequence>
+                            <ScriptCondition code="FOV_ContainsValuableShotgun"/>
+                            <Script code="Inventory_RemoveLowestValueShotgun"/>
+                            <Script code="Steering_Seek"/>
+                            <Script code="Inventory_AddNearestItem"/>
+                          </ReactiveSequence>
+                          <Sequence>
+                            <Script code="FOV_DestroyItems"/>
+                          </Sequence>
+                        </Fallback>
+                      </Sequence>
+                      <ReactiveSequence>
+                        <Script code="Inventory_PriorityRemoveLowestValueItem"/>
+                        <Script code="Steering_Seek"/>
+                        <Script code="Inventory_AddNearestItem"/>
+                      </ReactiveSequence>
+                    </Fallback>
+                  </Sequence>
+                  <Sequence>
+                    <ScriptCondition code="FOV_ContainsMedkit"/>
+                    <Fallback>
+                      <Sequence>
+                        <ScriptCondition code="Inventory_ContainsMedkit"/>
+                        <Fallback>
+                          <ReactiveSequence>
+                            <ScriptCondition code="FOV_ContainsValuableMedkit"/>
+                            <Script code="Inventory_UseMedkit"/>
+                            <Script code="Steering_Seek"/>
+                            <Script code="Inventory_AddNearestItem"/>
+                          </ReactiveSequence>
+                          <Sequence>
+                            <Script code="FOV_DestroyItems"/>
+                          </Sequence>
+                        </Fallback>
+                      </Sequence>
+                      <ReactiveSequence>
+                        <Script code="Inventory_PriorityRemoveLowestValueItem"/>
+                        <Script code="Steering_Seek"/>
+                        <Script code="Inventory_AddNearestItem"/>
+                      </ReactiveSequence>
+                    </Fallback>
+                  </Sequence>
+                  <Sequence>
+                    <ScriptCondition code="FOV_ContainsFood"/>
+                    <Fallback>
+                      <Sequence>
+                        <ScriptCondition code="Inventory_ContainsFood"/>
+                        <Fallback>
+                          <ReactiveSequence>
+                            <ScriptCondition code="FOV_ContainsValuableFood"/>
+                            <Script code="Inventory_UseFood"/>
+                            <Script code="Steering_Seek"/>
+                            <Script code="Inventory_AddNearestItem"/>
+                          </ReactiveSequence>
+                          <Sequence>
+                            <Script code="FOV_DestroyItems"/>
+                          </Sequence>
+                        </Fallback>
+                      </Sequence>
+                      <ReactiveSequence>
+                        <Script code="Inventory_PriorityRemoveLowestValueItem"/>
+                        <Script code="Steering_Seek"/>
+                        <Script code="Inventory_AddNearestItem"/>
+                      </ReactiveSequence>
+                    </Fallback>
+                  </Sequence>
+                </Fallback>
+              </Sequence>
+            </Fallback>
+          </Sequence>
+          <Fallback>
+            <Sequence>
+              <ScriptCondition code="FOV_ContainsFood"/>
+              <Inverter>
+                <ScriptCondition code="Inventory_ContainsFood"/>
+              </Inverter>
+              <Fallback>
+                <Sequence>
+                  <Script code="Target_SetValuableFood"/>
+                  <Fallback>
+                    <ReactiveSequence>
+                      <Inverter>
+                        <ScriptCondition code="Inventory_IsFull"/>
+                      </Inverter>
+                      <Script code="Steering_Seek"/>
+                      <Script code="Inventory_AddNearestItem"/>
+                    </ReactiveSequence>
+                    <ReactiveSequence>
+                      <Script code="Inventory_PriorityRemoveLowestValueItem"/>
+                      <Script code="Steering_Seek"/>
+                      <Script code="Inventory_AddNearestItem"/>
+                    </ReactiveSequence>
+                  </Fallback>
+                </Sequence>
+              </Fallback>
+            </Sequence>
+            <Sequence>
+              <ScriptCondition code="FOV_ContainsShotgun"/>
+              <Inverter>
+                <ScriptCondition code="Inventory_ContainsShotgun"/>
+              </Inverter>
+              <Fallback>
+                <Sequence>
+                  <Script code="Target_SetValuableShotgun"/>
+                  <Fallback>
+                    <ReactiveSequence>
+                      <Inverter>
+                        <ScriptCondition code="Inventory_IsFull"/>
+                      </Inverter>
+                      <Script code="Steering_Seek"/>
+                      <Script code="Inventory_AddNearestItem"/>
+                    </ReactiveSequence>
+                    <ReactiveSequence>
+                      <Script code="Inventory_PriorityRemoveLowestValueItem"/>
+                      <Script code="Steering_Seek"/>
+                      <Script code="Inventory_AddNearestItem"/>
+                    </ReactiveSequence>
+                  </Fallback>
+                </Sequence>
+              </Fallback>
+            </Sequence>
+            <Sequence>
+              <ScriptCondition code="FOV_ContainsMedkit"/>
+              <Inverter>
+                <ScriptCondition code="Inventory_ContainsMedkit"/>
+              </Inverter>
+              <Fallback>
+                <Sequence>
+                  <Script code="Target_SetValuableMedkit"/>
+                  <Fallback>
+                    <ReactiveSequence>
+                      <Inverter>
+                        <ScriptCondition code="Inventory_IsFull"/>
+                      </Inverter>
+                      <Script code="Steering_Seek"/>
+                      <Script code="Inventory_AddNearestItem"/>
+                    </ReactiveSequence>
+                    <ReactiveSequence>
+                      <Script code="Inventory_PriorityRemoveLowestValueItem"/>
+                      <Script code="Steering_Seek"/>
+                      <Script code="Inventory_AddNearestItem"/>
+                    </ReactiveSequence>
+                  </Fallback>
+                </Sequence>
+              </Fallback>
+            </Sequence>
+            <Sequence>
+              <ScriptCondition code="FOV_ContainsPistol"/>
+              <Inverter>
+                <ScriptCondition code="Inventory_ContainsPistol"/>
+              </Inverter>
+              <Fallback>
+                <Sequence>
+                  <Script code="Target_SetValuablePistol"/>
+                  <Fallback>
+                    <ReactiveSequence>
+                      <Inverter>
+                        <ScriptCondition code="Inventory_IsFull"/>
+                      </Inverter>
+                      <Script code="Steering_Seek"/>
+                      <Script code="Inventory_AddNearestItem"/>
+                    </ReactiveSequence>
+                    <ReactiveSequence>
+                      <Script code="Inventory_PriorityRemoveLowestValueItem"/>
+                      <Script code="Steering_Seek"/>
+                      <Script code="Inventory_AddNearestItem"/>
+                    </ReactiveSequence>
+                  </Fallback>
+                </Sequence>
+              </Fallback>
+            </Sequence>
+            <Fallback>
+              <ReactiveSequence>
+                <Inverter>
+                  <ScriptCondition code="Inventory_IsFull"/>
+                </Inverter>
+                <ScriptCondition code="Target_SetValuableItem"/>
+                <Script code="Steering_Seek"/>
+                <Script code="Inventory_AddNearestItem"/>
+              </ReactiveSequence>
+              <Fallback>
+                <Sequence>
+                  <Inverter>
+                    <ScriptCondition code="FOV_ContainsValuableItem"/>
+                  </Inverter>
+                  <Script code="FOV_DestroyItems"/>
+                </Sequence>
+                <ReactiveSequence>
+                  <Script code="Inventory_PriorityRemoveLowestValueItem"/>
+                  <Script code="Target_SetValuableItem"/>
+                  <Script code="Steering_Seek"/>
+                  <Script code="Inventory_AddNearestItem"/>
+                </ReactiveSequence>
+              </Fallback>
+            </Fallback>
+          </Fallback>
+        </Fallback>
+      </Sequence>
+      <Sequence>
+        <Script code="Steering_Wander"/>
+      </Sequence>
+    </Fallback>
+  </BehaviorTree>
+
+  <!-- Description of Node Models (used by Groot) -->
+  <TreeNodesModel/>
+
+</root>

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root BTCPP_format="4">
+  <BehaviorTree ID="behavior_tree">
+    <Sequence>
+      <Sequence>
+        <ScriptCondition code="FOV_ContainsPurgeZone"/>
+        <ScriptCondition code="Player_IsCriticallyWounded"/>
+        <ScriptCondition code="Inventory_ContainsMedkit"/>
+        <Script code="Player_EmergencyHeal"/>
+      </Sequence>
+      <Script code="Memory_Refresh"/>
+      <Fallback>
+        <Sequence>
+          <ScriptCondition code="Player_IsWounded"/>
+          <ScriptCondition code="Inventory_ContainsMedkit"/>
+          <Script code="Player_Heal"/>
+        </Sequence>
+        <Sequence>
+          <ScriptCondition code="Player_IsHungry"/>
+          <ScriptCondition code="Inventory_ContainsFood"/>
+          <Script code="Player_Eat"/>
+        </Sequence>
+        <Sequence>
+          <ScriptCondition code="Player_IsTired"/>
+          <Script code="Player_Walk"/>
+        </Sequence>
+        <Sequence>
+          <Inverter>
+            <ScriptCondition code="Player_WorldDiscovered"/>
+          </Inverter>
+          <ScriptCondition code="Player_CanScan"/>
+          <Inverter>
+            <ScriptCondition code="Player_IsInHouse"/>
+          </Inverter>
+          <Script code="Player_Scan"/>
+        </Sequence>
+        <Sequence>
+          <ScriptCondition code="FOV_ContainsHouse"/>
+          <Script code="Memory_RememberHouse"/>
+        </Sequence>
+        <Sequence>
+          <ScriptCondition code="Player_IsInHouse"/>
+          <Script code="Memory_RememberFirstDoor"/>
+        </Sequence>
+        <Sequence>
+          <Inverter>
+            <ScriptCondition code="Player_IsInHouse"/>
+          </Inverter>
+          <Script code="Memory_RememberSecondDoor"/>
+        </Sequence>
+        <Sequence>
+          <ScriptCondition code="FOV_ContainsItem"/>
+          <Script code="Memory_RememberItem"/>
+        </Sequence>
+        <Sequence>
+          <ScriptCondition code="Inventory_ContainsEmptyItem"/>
+          <Script code="Inventory_RemoveEmptyItem"/>
+        </Sequence>
+        <Sequence>
+          <ScriptCondition code="Inventory_IsWeaponFull"/>
+          <Script code="Inventory_RemoveWeapon"/>
+        </Sequence>
+        <Fallback>
+          <Sequence>
+            <ScriptCondition code="FOV_ContainsEnemy"/>
+            <ScriptCondition code="Inventory_ContainsWeapon"/>
+            <Script code="Target_SetNearestEnemy"/>
+            <Script code="Steering_Face"/>
+            <ScriptCondition code="Target_IsInShootingRange"/>
+            <Fallback>
+              <Sequence>
+                <ScriptCondition code="Inventory_ContainsPistol"/>
+                <Script code="Inventory_UsePistol"/>
+                <Script code="Steering_RadarSeek"/>
+              </Sequence>
+              <Sequence>
+                <ScriptCondition code="Inventory_ContainsShotgun"/>
+                <Script code="Inventory_UseShotgun"/>
+                <Script code="Steering_RadarSeek"/>
+              </Sequence>
+            </Fallback>
+          </Sequence>
+          <Sequence>
+            <ScriptCondition code="FOV_ContainsEnemy"/>
+            <Inverter>
+              <ScriptCondition code="FOV_ContainsPurgeZone"/>
+            </Inverter>
+            <Inverter>
+              <ScriptCondition code="Inventory_ContainsWeapon"/>
+            </Inverter>
+            <Fallback>
+              <Script code="Target_SetClosestHouseLocation"/>
+              <Script code="Target_SetClosestPathPointLocation"/>
+              <Script code="Target_SetPlayerBack"/>
+            </Fallback>
+            <Script code="Player_Run"/>
+            <Script code="Steering_RadarSeek"/>
+          </Sequence>
+          <Sequence>
+            <ScriptCondition code="Player_WasBitten"/>
+            <Script code="Player_Run"/>
+          </Sequence>
+          <Fallback>
+            <Sequence>
+              <ScriptCondition code="FOV_ContainsPurgeZone"/>
+              <Script code="Memory_SetTime"/>
+              <Script code="Target_SetClosestSafeZone"/>
+              <Script code="Player_Run"/>
+              <Script code="Steering_RadarSeek"/>
+            </Sequence>
+            <ReactiveSequence>
+              <ScriptCondition code="Memory_TimeSet"/>
+              <ScriptCondition code="Steering_RadarSeek"/>
+              <Script code="Player_Stay"/>
+            </ReactiveSequence>
+            <Fallback>
+              <Sequence>
+                <Fallback>
+                  <Sequence>
+                    <ScriptCondition code="Player_CanRun"/>
+                    <Script code="Player_Run"/>
+                  </Sequence>
+                  <Script code="Player_Walk"/>
+                </Fallback>
+                <Fallback>
+                  <Sequence>
+                    <ScriptCondition code="Player_IsInHouse"/>
+                    <ScriptCondition code="Memory_ContainsUnvisitedCorner"/>
+                    <Script code="Target_SetClosestUnvisitedCornerLocation"/>
+                    <Script code="Steering_RadarSeek"/>
+                  </Sequence>
+                  <Sequence>
+                    <Inverter>
+                      <ScriptCondition code="Inventory_IsFull"/>
+                    </Inverter>
+                    <ScriptCondition code="Memory_ContainsItem"/>
+                    <Script code="Target_SetClosesPrioritytItemLocation"/>
+                    <Script code="Steering_RadarSeek"/>
+                    <Script code="Inventory_AddNearestItem"/>
+                  </Sequence>
+                  <Sequence>
+                    <ScriptCondition code="Memory_ContainsGarbage"/>
+                    <ScriptCondition code="Target_SetClosestGarbageLocation"/>
+                    <ScriptCondition code="Steering_RadarSeek"/>
+                    <Script code="Inventory_DestroyNearestItem"/>
+                  </Sequence>
+                  <Sequence>
+                    <ScriptCondition code="Memory_ContainsUnvisitedHouse"/>
+                    <Script code="Target_SetClosestUnvisitedHouseLocation"/>
+                    <Script code="Steering_RadarSeek"/>
+                  </Sequence>
+                  <Sequence>
+                    <Inverter>
+                      <ScriptCondition code="Player_WorldDiscovered"/>
+                    </Inverter>
+                    <ScriptCondition code="Memory_ContainsUnvisitedPathPointLocation"/>
+                    <ScriptCondition code="Target_SetClosestUnvisitedPathPointLocation"/>
+                    <Script code="Steering_RadarSeek"/>
+                  </Sequence>
+                  <Sequence>
+                    <Inverter>
+                      <ScriptCondition code="Memory_ContainsUnvisitedHouse"/>
+                    </Inverter>
+                    <Inverter>
+                      <ScriptCondition code="Memory_ContainsUnvisitedPathPointLocation"/>
+                    </Inverter>
+                    <Script code="Memory_Forget"/>
+                  </Sequence>
+                </Fallback>
+              </Sequence>
+              <Fallback>
+                <Script code="Steering_Wander"/>
+              </Fallback>
+            </Fallback>
+          </Fallback>
+        </Fallback>
+      </Fallback>
+    </Sequence>
+  </BehaviorTree>
+
+  <!-- Description of Node Models (used by Groot) -->
+  <TreeNodesModel/>
+
+</root>
