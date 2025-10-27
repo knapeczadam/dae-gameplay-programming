@@ -25,8 +25,8 @@ The repository consists of two main branches:
 **Total study time:** 180 hours  
 **Semester:** 2023 — Third semester  
 **Location:** Kortrijk, Belgium  
-**Co-ordinator:** Samyn Koen  
-**Other teaching staff:** Boury Fries  
+**Co-ordinator:** Koen Samyn
+**Other teaching staff:** Fries Boury
 
 ---
 
