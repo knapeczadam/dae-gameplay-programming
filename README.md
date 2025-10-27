@@ -1,46 +1,56 @@
-# 🧟 Gameplay Programming — Zombie Survival Game (DAE, 2023)
+# 🧟 Gameplay Programming  
 
 Hello fellow DAE student or curious visitor 👋  
-This repository contains my work for the **Gameplay Programming** course at *Digital Arts & Entertainment* (DAE).  
+This repository contains my work for the **Gameplay Programming** course at *DAE*.  
+
+---
+
+## 🗄️ About this repository
+
 It includes both weekly AI lab exercises and a final project built using the **custom DAE C++ gameplay framework**.
 
 The course introduced the foundations of **game AI** — from steering behaviors and pathfinding to decision-making structures such as **finite state machines** and **behavior trees**.  
 The final project applies these systems in a small **Zombie Survival** simulation, where an autonomous agent tries to survive as long as possible by reacting intelligently to its environment.
 
----
+This repository was uploaded primarily as an **archive of coursework**, documenting the learning process of implementing common gameplay AI patterns from scratch.  
 
-## 🗂 Repository Structure
-
-The repository consists of two main branches:
-
-- **`framework`** — contains the weekly lab exercises, implementing various AI concepts step by step.  
-- **`zombie-survival-game`** — contains the final project, where all learned systems are integrated into a single agent-based simulation.
+> ⚠️ Keep in mind: these projects were made during the learning phase — expect minor bugs, experimental systems, and work-in-progress logic.  
+> They represent the *process of learning*, not a finished product.  
 
 ---
 
-## 🧠 About the Course
+## 🔎 Course Information
 
-**Course:** Gameplay Programming  
-**Study load:** 6 ECTS  
-**Total study time:** 180 hours  
-**Semester:** 2023 — Third semester  
-**Location:** Kortrijk, Belgium  
-**Co-ordinator:** Koen Samyn
-**Other teaching staff:** Fries Boury
+**📚 Course:** Gameplay Programming  
+**🏫 University:** Howest University of Applied Sciences - Digital Arts and Entertainment   
+**📍 Location:** Kortrijk, Belgium  
+**🗓️ Academic year:** 2023–24 | Third semester  
+**🎓 Study load:** 6 ECTS  
+**⏱️ Total study time:** 180 hours  
+
+---
+
+## 👨‍🏫 Teaching Staff
+
+**Co-ordinator:** Koen Samyn  
+**Other teaching staff:** Fries Boury  
 
 ---
 
 ## 🎯 Learning Goals
 
-**LR04:** The student researches and selects relevant gameplay AI principles for a concrete implementation.  
-**LR07:** The student develops interactive 3D applications efficiently, selecting the most suitable algorithms for gameplay systems.  
-**LR09:** The student solves complex technical problems using context-specific programming skills and implements efficient, structured, and maintainable code.
+- Researches and analyzes **state-of-the-art gameplay principles** for implementing concrete gameplay elements.  
+- Selects and motivates the **most efficient algorithms** and **gameplay concepts** for specific implementations.  
+- Works in a **problem-solving** and **technically grounded** way, applying programming skills within given constraints.  
+- Breaks down **complex technical problems** into smaller, solvable parts.  
+- Implements assignments using appropriate **programming techniques** and **efficient code structure**.  
+- Uses game engines, frameworks, middleware, and external services effectively within a game project.  
+- Integrates and evaluates **existing tools or systems** based on technical and production constraints.  
+- Analyzes and fixes problems methodically, improving solutions based on findings.  
 
 ---
 
-## 📘 Content Overview
-
-Topics covered throughout the semester:
+## 🧩 Course Content
 
 - Steering behaviours  
 - Combined steering  
@@ -55,27 +65,12 @@ Topics covered throughout the semester:
 
 ---
 
-## 🧩 Final Project — Zombie Survival Game
+## 📂 Repository Structure
 
-The final project demonstrates the integration of multiple AI systems into one autonomous simulation.
+The repository consists of two main branches:
 
-### Concept
-A lone agent must **survive as long as possible** in an environment populated by zombies.  
-Its decisions are controlled by a **Behavior Tree**, while movement and avoidance use **steering and pathfinding** logic.
-
-### Core Systems
-- **Steering Behaviours:** Seeking, fleeing, wandering, and obstacle avoidance  
-- **Pathfinding:** Graph-based world navigation using **A\***  
-- **Decision Making:** Finite State Machines and Behaviour Trees  
-- **Influence Mapping:** Environmental awareness and prioritization  
-- **Optimization:** Spatial partitioning for efficient AI queries
-
----
-
-## 🧾 Educational Purpose
-
-This repository was uploaded primarily as an **archive of coursework**, documenting the learning process of implementing common gameplay AI patterns from scratch.  
-These projects were developed during the **learning phase**, so expect small imperfections and experimental code — they represent a snapshot of progress rather than finished products.
+- **`framework`** — contains the weekly lab exercises, implementing various AI concepts step by step.  
+- **`zombie-survival-game`** — contains the final project, where all learned systems are integrated into a single agent-based simulation.
 
 ---
 
@@ -87,8 +82,11 @@ A release build of the final project is available under:
 
 ---
 
-## 🪪 License
+## ⚖️ License
 
-All content in this repository is released under the **MIT License**.  
-You’re free to explore, use, and modify the code with proper attribution.
+This repository is licensed under the **MIT License** — you’re free to explore, learn from, and reuse the code with proper attribution.  
 
+---
+
+*Made with logic, patience, and a few panicking zombies 🧠🧟‍♂️  
+— Ádám*  
