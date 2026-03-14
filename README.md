@@ -85,8 +85,3 @@ A release build of the final project is available under:
 ## ⚖️ License
 
 This repository is licensed under the **MIT License** — you’re free to explore, learn from, and reuse the code with proper attribution.  
-
----
-
-*Made with logic, patience, and a few panicking zombies 🧠🧟‍♂️  
-— Ádám*  
